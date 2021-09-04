@@ -22,7 +22,7 @@ namespace :ranks do
           Rank.create(user_id: total_score[:user_id], rank: index, score: total_score[:total_score])
         end
       end
-
+    end
 
     desc 'chapter2 ゲーム内のユーザーランキング情報をリセットする'
     task reset: :environment do
