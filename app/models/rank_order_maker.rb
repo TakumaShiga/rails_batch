@@ -6,11 +6,11 @@ class RankOrderMaker
     users_sorted_by_score.each do |user|
       rank += 1 if user.total_score < previous_score
       yield(user, rank)
-      previous_score - user.total_score
+      previous_score = user.total_score
     end
   end
 
-  priate
+  private
 
   def users_sorted_by_score
     User.all.select { |user| user.total_score.nonzero? }.sort_by { |user| user.total_score * -1 }
