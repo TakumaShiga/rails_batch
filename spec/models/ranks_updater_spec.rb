@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RankUpdater, type: :model do
+RSpec.describe RanksUpdater, type: :model do
   describe '#update_all' do
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
@@ -20,7 +20,7 @@ RSpec.describe RankUpdater, type: :model do
       create(:user_score, user: user3, score: 1)
     end
 
-    context 'ranksテーブルにまだデータが存在していない場合' do
+    shared_examples 'ランキング情報更新処理の検証' do
       it 'ranksテーブルにデータが作成される' do
         RanksUpdater.new.update_all
 
@@ -39,6 +39,20 @@ RSpec.describe RankUpdater, type: :model do
         expect(ranks[2].rank).to eq 3
         expect(ranks[2].score).to eq 3
       end
+    end
+
+    context 'ranksテーブルにまだデータが存在していない場合' do
+    end
+
+    context 'ranksテーブルにすでにデータが存在している場合' do
+      before do
+        create(:rank, user: user1, rank: 3, score: 10)
+        create(:rank, user: user2, rank: 2, score: 20)
+        create(:rank, user: user3, rank: 3, score: 31)
+      end
+
+      include_examples 'ランキング情報更新処理の検証'
+    end
     end
   end
 end
