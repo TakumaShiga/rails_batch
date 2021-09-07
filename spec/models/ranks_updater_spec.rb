@@ -53,6 +53,5 @@ RSpec.describe RanksUpdater, type: :model do
 
       include_examples 'ランキング情報更新処理の検証'
     end
-    end
   end
 end
