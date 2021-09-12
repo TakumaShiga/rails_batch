@@ -5,6 +5,7 @@ class RanksUpdater
       Rank.delete_all
       # ユーザーごとのスコア合計を降順に並べ替え、そこからランキング情報を再作成する
     create_ranks
+    
     end
   end
 
