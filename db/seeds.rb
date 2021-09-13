@@ -18,6 +18,7 @@ User.transaction do
     user = User.create(id: i, name: "#{i}人目のゲームユーザー")
     rand(30).times do
       UserScore.create(user_id: user.id, score: rand(1..100), received_at: Time.current.ago(rand(0..60).days))
+      sleep 0.1
     end
   end
 end
