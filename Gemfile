@@ -7,6 +7,7 @@ ruby '2.6.5'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'mysql2'
+gem 'activerecord-import'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
