@@ -22,7 +22,7 @@ module Chapter5Part5
 
       def update_ranks
         RankOrderMaker.new.each_ranked_user do |score, rank|
-          Rank.where(dcore: score).update_all(rank: rank)
+          Rank.where(score: score).update_all(rank: rank)
         end
       end
     end
